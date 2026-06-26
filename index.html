@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Water Level Control System</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-droplet"></i>
+
+        <div>
+            <h2>Smart Water</h2>
+            <p>Control System</p>
+        </div>
+
+    </div>
+
+    <ul>
+
+        <li onclick="showPage('dashboard')">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </li>
+
+        <li onclick="showPage('monitor')">
+            <i class="fa-solid fa-chart-line"></i>
+            Monitor
+        </li>
+
+        <li onclick="showPage('controls')">
+            <i class="fa-solid fa-sliders"></i>
+            Controls
+        </li>
+
+        <li onclick="showPage('history')">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            History
+        </li>
+
+        <li onclick="showPage('alerts')">
+            <i class="fa-solid fa-bell"></i>
+            Alerts
+        </li>
+
+        <li onclick="showPage('settings')">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </li>
+
+    </ul>
+
+    <div class="online">
+
+        <h3>🟢 System Online</h3>
+
+        <p>All systems operational</p>
+
+        <h2 id="clock"></h2>
+
+        <span id="date"></span>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>
+            💧 Smart Water Level Control System
+        </h1>
+
+        <div class="header-right">
+
+            <h3 id="time"></h3>
+
+        </div>
+
+    </div>
+
+    <!-- DASHBOARD -->
+
+    <div id="dashboard" class="page">
+
+        <div class="top-section">
+
+            <!-- TANK -->
+
+            <div class="card tank-card">
+
+                <h2>Tank Level Monitor</h2>
+
+                <div class="tank-container">
+
+                    <div class="scale">
+
+                        <span>100%</span>
+                        <span>75%</span>
+                        <span>50%</span>
+                        <span>25%</span>
+                        <span>0%</span>
+
+                    </div>
+
+                    <div class="tank">
+
+                        <div class="water"
+                             id="water"></div>
+
+                    </div>
+
+                </div>
+
+                <h1 id="levelText">53%</h1>
+
+                <p>Current Water Level</p>
+
+                <div class="tank-details">
+
+                    <p>Capacity : 1000 L</p>
+
+                    <p>Flow Rate : 25 L/min</p>
+
+                    <p>Status : Normal</p>
+
+                </div>
+
+            </div>
+
+            <!-- CONTROLS -->
+
+            <div class="card control-card">
+
+                <h2>System Controls</h2>
+
+                <div class="motor-box">
+
+                    <i class="fa-solid fa-fan fa-4x"></i>
+
+                    <h1 id="motorText">
+                        ON
+                    </h1>
+
+                    <p>Motor Running</p>
+
+                </div>
+
+                <button onclick="startMotor()">
+                    START MOTOR
+                </button>
+
+                <button class="stop"
+                        onclick="stopMotor()">
+                    STOP MOTOR
+                </button>
+
+                <div class="mode-box">
+
+                    <button onclick="setAuto()">
+                        AUTO MODE
+                    </button>
+
+                    <button onclick="setManual()">
+                        MANUAL MODE
+                    </button>
+
+                    <h3 id="modeText">
+                        Current Mode : AUTO
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <!-- STATUS -->
+
+            <div class="card status-card">
+
+                <div class="status-box">
+
+                    <h3>
+                        <i class="fa-solid fa-shield"></i>
+                        Water Alert
+                    </h3>
+
+                    <p>Normal</p>
+
+                </div>
+
+                <div class="status-box">
+
+                    <h3>
+                        <i class="fa-solid fa-heart"></i>
+                        System Health
+                    </h3>
+
+                    <div class="progress">
+
+                        <div class="health-fill"></div>
+
+                    </div>
+
+                    <p>95%</p>
+
+                </div>
+
+                <div class="status-box">
+
+                    <h3>
+                        <i class="fa-solid fa-bolt"></i>
+                        Power Status
+                    </h3>
+
+                    <div class="progress">
+
+                        <div class="power-fill"></div>
+
+                    </div>
+
+                    <p>88%</p>
+
+                </div>
+
+                <div class="status-box">
+
+                    <h3>
+                        <i class="fa-solid fa-chart-pie"></i>
+                        Efficiency
+                    </h3>
+
+                    <h1>92%</h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BOTTOM CARDS -->
+
+        <div class="bottom-cards">
+
+            <div class="summary-card">
+
+                <h3>Today's Summary</h3>
+
+                <h1>1250 L</h1>
+
+                <div class="trend up">
+                    ▲ +12%
+                </div>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h3>Pumping Time</h3>
+
+                <h1>2h 35m</h1>
+
+                <div class="trend up">
+                    ▲ +8%
+                </div>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h3>Energy Usage</h3>
+
+                <h1>1.85 kWh</h1>
+
+                <div class="trend down">
+                    ▼ -4%
+                </div>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h3>Efficiency</h3>
+
+                <h1>92%</h1>
+
+                <div class="trend up">
+                    ▲ +6%
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MONITOR -->
+
+    <div id="monitor"
+         class="page hidden">
+
+        <div class="page-card">
+
+            <h1>Water Monitoring</h1>
+
+            <h2>Tank Capacity : 1000 L</h2>
+
+            <h2>Current Level : 53%</h2>
+
+            <h2>Motor Status : Running</h2>
+
+        </div>
+
+    </div>
+
+    <!-- CONTROLS -->
+
+    <div id="controls"
+         class="page hidden">
+
+        <div class="page-card">
+
+            <h1>Control Panel</h1>
+
+            <button onclick="setAuto()">
+                AUTO MODE
+            </button>
+
+            <button onclick="setManual()">
+                MANUAL MODE
+            </button>
+
+            <h2 id="controlMode">
+                Current Mode : AUTO
+            </h2>
+
+        </div>
+
+    </div>
+
+    <!-- HISTORY -->
+
+    <div id="history"
+         class="page hidden">
+
+        <div class="page-card">
+
+            <h1>History</h1>
+
+            <h2>Last Pump : 10:30 AM</h2>
+
+            <h2>Water Usage : 1250 L</h2>
+
+            <h2>Motor Runtime : 2h 35m</h2>
+
+        </div>
+
+    </div>
+
+    <!-- ALERTS -->
+
+    <div id="alerts"
+         class="page hidden">
+
+        <div class="page-card">
+
+            <h1>Alerts</h1>
+
+            <h2>No Alerts Found</h2>
+
+        </div>
+
+    </div>
+
+    <!-- SETTINGS -->
+
+    <div id="settings"
+         class="page hidden">
+
+        <div class="page-card">
+
+            <h1>Settings</h1>
+
+            <h2>Dark Theme Enabled</h2>
+
+            <h2>Auto Control Enabled</h2>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

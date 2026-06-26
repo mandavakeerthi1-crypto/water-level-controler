@@ -1,0 +1,324 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#02152f;
+    color:white;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:260px;
+    height:100vh;
+    background:#04122d;
+    padding:25px;
+    box-shadow:0 0 20px rgba(0,150,255,0.3);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:40px;
+}
+
+.logo i{
+    font-size:40px;
+    color:#4fc3ff;
+}
+
+.logo h2{
+    color:#4fc3ff;
+}
+
+.logo p{
+    color:#ccc;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    padding:18px;
+    margin-bottom:15px;
+    background:#08244c;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.sidebar ul li:hover{
+    background:#0e4d95;
+    transform:translateX(5px);
+}
+
+.sidebar ul li i{
+    margin-right:12px;
+    color:#4fc3ff;
+}
+
+.online{
+    margin-top:80px;
+    background:#065c2f;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.online h2{
+    margin-top:10px;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:280px;
+    padding:25px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.header h1{
+    color:#4fc3ff;
+}
+
+/* TOP SECTION */
+
+.top-section{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
+}
+
+.card{
+    background:#071b45;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 0 15px rgba(0,150,255,0.2);
+}
+
+/* TANK */
+
+.tank-card{
+    text-align:center;
+}
+
+.tank-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:25px 0;
+}
+
+.scale{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    height:320px;
+    margin-right:15px;
+    color:#7fdcff;
+}
+
+.tank{
+    width:160px;
+    height:320px;
+    border:5px solid #7fdcff;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+}
+
+.water{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:53%;
+    background:linear-gradient(#4fc3ff,#0d4fa8);
+    transition:1s;
+}
+
+#levelText{
+    color:#4fc3ff;
+    font-size:50px;
+    margin:15px 0;
+}
+
+.tank-details p{
+    margin:5px;
+}
+
+/* CONTROL */
+
+.motor-box{
+    background:#167b35;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    margin:25px 0;
+}
+
+.motor-box h1{
+    font-size:55px;
+    margin:15px 0;
+}
+
+button{
+    width:170px;
+    padding:15px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    font-size:17px;
+    cursor:pointer;
+    color:white;
+    background:#1d7fff;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.stop{
+    background:red;
+}
+
+.mode-box{
+    margin-top:25px;
+}
+
+/* STATUS */
+
+.status-box{
+    background:#0c2b63;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.status-box h3{
+    margin-bottom:10px;
+    color:#7fdcff;
+}
+
+.progress{
+    width:100%;
+    height:12px;
+    background:#1f1f1f;
+    border-radius:20px;
+    overflow:hidden;
+    margin:10px 0;
+}
+
+.health-fill{
+    width:95%;
+    height:100%;
+    background:#00ff66;
+}
+
+.power-fill{
+    width:88%;
+    height:100%;
+    background:#00bfff;
+}
+
+/* BOTTOM CARDS */
+
+.bottom-cards{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.summary-card{
+    background:#071b45;
+    padding:25px;
+    border-radius:20px;
+}
+
+.summary-card h3{
+    color:#7fdcff;
+}
+
+.summary-card h1{
+    margin:15px 0;
+}
+
+.trend{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.up{
+    color:#00ff66;
+}
+
+.down{
+    color:red;
+}
+
+/* PAGES */
+
+.page-card{
+    background:#071b45;
+    padding:40px;
+    border-radius:20px;
+    margin-top:20px;
+}
+
+.page-card h1{
+    color:#4fc3ff;
+    margin-bottom:20px;
+}
+
+.page-card h2{
+    margin:15px 0;
+}
+
+.hidden{
+    display:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+    .top-section{
+        grid-template-columns:1fr;
+    }
+
+    .bottom-cards{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .bottom-cards{
+        grid-template-columns:1fr;
+    }
+}
